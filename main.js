@@ -2,8 +2,22 @@ let textFile = document.querySelector("#textFile");
 let form  = document.querySelector("form");
 
 
+form.addEventListener("submit", event => {
+    event.preventDefault();
+    let a = textFile.textContent;
+    fetch("file.txt", {
+        method: 'PUT', // Method itself
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8' // Indicates the content
+        },
+        body: JSON.stringify(a) // We send data in JSON format
+    })
+        .then(res => res.text()) // or res.json()
+        .then(res => console.log(res))
 
-    fetch("main.html")
+})
+
+    fetch("file.txt", {method: "GET"})
         .then(
             function (response) {
                 if (!response.ok) {
@@ -12,21 +26,9 @@ let form  = document.querySelector("form");
 
                 response.text().then(data => {
                     textFile.textContent = data;
-                    console.log(textFile.textContent)
-
-
-
-                    form.addEventListener("submit", event => {
-                        fetch("main.html", {
-                            method: "PUT",
-                            body: textFile.textContent
-
-                        })
-                            .then(res => res.text().then(data => console.log(data)));
-                    })
-
-
+                    // console.log(textFile.textContent)
                 });
+                console.log(textFile.textContent)
             }
         )
         .catch(err => {
