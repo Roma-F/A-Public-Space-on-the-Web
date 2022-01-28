@@ -5,12 +5,14 @@
 <p>This is a self-editing website. Select a file, edit it, and save to
     update the website.</p>
 
-<p>Files: <select id="filelist"></select></p>
+<p>Files: <select id="fileList"></select></p>
 
 <p>
-    <textarea id="file" style="width: 30%; height: 300px"></textarea>
-    <br>
-    <button onclick="saveFile()">Save</button>
+    <form>
+        <textarea id="textFile" style="width: 30%; height: 300px"></textarea>
+            <br>
+        <button>Save</button>
+    </form>
 </p>
 
 <script src="main.js"></script>
